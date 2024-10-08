@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToneX pedal webbcontroller</title>
+    <title>ToneX pedal webcontroller</title>
     <style>
 body {
     display: flex;
@@ -17,6 +17,10 @@ body {
 background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
+p {
+    align-items: center;
+    text-align: center;
 }
 h1 {
     font-size: 2em; /* Stor textstorlek */
@@ -47,8 +51,9 @@ h1 {
 </head>
 <body>
     <h1>ToneX pedal webbcontroller</h1>
-    <select id="midi-outputs"></select>
-    <select id="midi-channel">
+    <p>Hi, this is a hobbyproject where you can control your ToneX Pedal from your browser. <br>Instructions: Connect pedal via cable, Choose ToneX as midi device (refesh page if ToneX is not showing), choose midichannel if you've changed it. </p>
+    <div>Midi-device: <select id="midi-outputs"></select> </div>
+    <div>Midi-Channel:<select id="midi-channel">
         <!-- Kanalval från 1 till 16 -->
         <option value="0">MidiCh 1</option>
         <option value="1">MidiCh 2</option>
@@ -66,7 +71,8 @@ h1 {
         <option value="13">MidiCh 14</option>
         <option value="14">MidiCh 15</option>
         <option value="15">MidiCh 16</option>
-    </select>
+    </select></div>
+
 <h2>Tone controls</h2>
     <div class="row" id="row1"></div>
 <h2>Reverb controls</h2>
