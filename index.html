@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToneX pedal webbcontroller</title>
+    <style>
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    user-select: none;
+    background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+h1 {
+    font-size: 2em; /* Stor textstorlek */
+    font-weight: bold; /* Fet text */
+}
+.row {
+    display: flex;
+    margin: 10px 0;
+}
+.knob-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+.knob {
+    border: 3px solid #000000;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.label {
+    text-align: center;
+              font-size: 1.1em; /* Stor textstorlek */
+    font-weight: bold; /* Fet text */
+}
+    </style>
+</head>
+<body>
+    <h1>ToneX pedal webbcontroller</h1>
+    <select id="midi-outputs"></select>
+    <select id="midi-channel">
+        <!-- Kanalval från 1 till 16 -->
+        <option value="0">MidiCh 1</option>
+        <option value="1">MidiCh 2</option>
+        <option value="2">MidiCh 3</option>
+        <option value="3">MidiCh 4</option>
+        <option value="4">MidiCh 5</option>
+        <option value="5">MidiCh 6</option>
+        <option value="6">MidiCh 7</option>
+        <option value="7">MidiCh 8</option>
+        <option value="8">MidiCh 9</option>
+        <option value="9">MidiCh 10</option>
+        <option value="10">MidiCh 11</option>
+        <option value="11">MidiCh 12</option>
+        <option value="12">MidiCh 13</option>
+        <option value="13">MidiCh 14</option>
+        <option value="14">MidiCh 15</option>
+        <option value="15">MidiCh 16</option>
+    </select>
+<h2>Tone controls</h2>
+    <div class="row" id="row1"></div>
+<h2>Reverb controls</h2>
+    <div class="row" id="row2"></div>
+<h2>Noise Gate controls</h2>
+    <div class="row" id="row3"></div>
+<h2>Compressor controls</h2>
+    <div class="row" id="row4"></div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    user-select: none;
+}
+h1 {
+    font-size: 2em; /* Stor textstorlek */
+    font-weight: bold; /* Fet text */
+}
+.row {
+    display: flex;
+    margin: 10px 0;
+}
+.knob-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+.knob {
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.label {
+    text-align: center;
+              font-size: 1.1em; /* Stor textstorlek */
+    font-weight: bold; /* Fet text */
+}
