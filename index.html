@@ -4,54 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToneX pedal webcontroller</title>
-    <style>
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    user-select: none;
-    background: #2980B9;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #9cecfb, #65c7f7, #0052d4);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #9cecfb, #65c7f7, #0052d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
-p {
-    align-items: center;
-    text-align: center;
-}
-h1 {
-    font-size: 2em; /* Stor textstorlek */
-    font-weight: bold; /* Fet text */
-}
-.row {
-    display: flex;
-    margin: 10px 0;
-}
-.knob-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 10px;
-}
-.knob {
-    border: 3px solid #000000;
-    cursor: pointer;
-    margin-bottom: 5px;
-    border-radius: 5px;
-}
-.label {
-    text-align: center;
-              font-size: 1.1em; /* Stor textstorlek */
-    font-weight: bold; /* Fet text */
-}
-    </style>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="png/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="png/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="png/favicon-16x16.png"
+  />
 </head>
 <body>
     <h1>ToneX pedal webbcontroller</h1>
-    <p>Hi, this is a hobbyproject where you can control your ToneX Pedal from your browser.</p>
+    <p>Hi, this is a hobbyproject where you can control your <a href="https://www.ikmultimedia.com/products/tonexpedal/">Tonex Pedal</a> from your browser. Instructions at the bottom. Doesn't work with Tonex One.</p>
     <div>Midi-device: <select id="midi-outputs"></select> </div>
     <div>Midi-Channel:<select id="midi-channel">
         <!-- Kanalval från 1 till 16 -->
@@ -82,11 +56,18 @@ h1 {
 <h2>Compressor controls</h2>
     <div class="row" id="row4"></div>
 
-    <p> Instructions: 
-        <br>1. Connect pedal via cable. Make sure Midi is set to 'Through' or 'Merge' on the tonex.
-        <br>2. Choose ToneX as midi device (refesh page if ToneX is not showing).
-        <br>3. Choose midichannel if you've changed it.
-        <br>DISCLAIMER: The information is one way, the knobs won't know what your settings are until you move them here.  </p>
+    <p class="bottomText"> This site works by sending MIDI from your browser to your pedal. 
+        <br>If your ToneX is connected to more pedals via midi they might respond to the midi signals unless set to individual midi channels.
+        <br>Instructions: 
+        <br><b>1.</b> Connect pedal via cable. Make sure Midi is set to 'Through' or 'Merge' on the tonex.
+        <br><b>2.</b> Choose ToneX as midi device, refresh page if ToneX is not showing. On windows you also need to install the ToneX ASIO drivers from the IK Product Manager.
+        <br><b>3.</b> Choose midichannel, if you haven't changed it on the pedal it's most likely 1.
+        <br><b>4.</b> If you are happy with your sound, you need to save it by using the save function on the pedal. (Hold the preset encoder to enter save mode or press Model and Preset encoders simultaneously.)
+        <br>The information is one way, the knobs won't update their position if you load a new patch. 
+        <br>
+        <br>DISCLAIMER: These pedals are made to recieve midi, in case of bugs or glitches, reboot your pedal. 
+        <br>I've stress tested my own pedals without problem but use this site at your own risk. I take no responsibility. 
+        <br><a href="https://www.ikmultimedia.com/">ToneX Pedal is an IK Multimedia product</a></p>
     <script src="app.js"></script>
 </body>
 </html>

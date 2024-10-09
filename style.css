@@ -6,6 +6,14 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     user-select: none;
+    background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #9cecfb, #65c7f7, #0052d4);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #9cecfb, #65c7f7, #0052d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+p {
+    align-items: center;
+    text-align: center;
 }
 h1 {
     font-size: 2em; /* Stor textstorlek */
@@ -22,12 +30,19 @@ h1 {
     margin: 0 10px;
 }
 .knob {
-    border: 1px solid #ccc;
+    border: 3px solid #000000;
     cursor: pointer;
     margin-bottom: 5px;
+    border-radius: 5px;
 }
 .label {
     text-align: center;
               font-size: 1.1em; /* Stor textstorlek */
     font-weight: bold; /* Fet text */
+}
+.bottomText {
+    text-align: center;
+    font-size: 0.9em; /* Stor textstorlek */
+
+
 }
