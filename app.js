@@ -12,7 +12,7 @@ const knobConfigs = [
         { cc: 85, name: 'Reverb type' },
         { cc: 77, name: 'Pre-delay' },
         { cc: 76, name: 'Time' },
-        { cc: 104, name: 'Mix' },
+        { cc: 79, name: 'Mix' },
     ], toggle: { cc: 75, name: 'Reverb' }},
     { id: 'row3', knobs: [
         { cc: 15, name: 'Threshold' },
