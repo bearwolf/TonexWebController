@@ -6,9 +6,10 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     user-select: none;
-    background: #2980B9;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #9cecfb, #65c7f7, #0052d4);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #9cecfb, #65c7f7, #0052d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #3f3f3f;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #595959, #3f3f3f, #252525);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #595959, #3f3f3f, #252525); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: rgb(255, 255, 255);
 
 }
 p {
@@ -42,7 +43,7 @@ h1 {
 }
 .bottomText {
     text-align: center;
-    font-size: 0.9em; /* Stor textstorlek */
+    font-size: em; /* Stor textstorlek */
 
 
 }
