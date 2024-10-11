@@ -7,6 +7,7 @@ const knobConfigs = [
         { cc: 106, name: 'Presence' },
         { cc: 107, name: 'Depth' },
         { cc: 103, name: 'Model volume' },
+        { cc: 104, name: 'Dry/Wet signal' },
     ]},
     { id: 'row2', knobs: [
         { cc: 85, name: 'Reverb type' },
