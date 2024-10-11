@@ -15,10 +15,12 @@ const knobConfigs = [
         { cc: 104, name: 'Mix' },
     ], toggle: { cc: 75, name: 'Reverb' }},
     { id: 'row3', knobs: [
+        { cc: 15, name: 'Threshold' },
         { cc: 16, name: 'Release' },
         { cc: 17, name: 'Depth' },
     ], toggle: { cc: 14, name: 'Noise gate' }},
     { id: 'row4', knobs: [
+        { cc: 19, name: 'Threshold' },
         { cc: 20, name: 'Gain' },
         { cc: 21, name: 'Attack' },
         { cc: 22, name: 'Pre/Post' },
