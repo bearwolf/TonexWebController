@@ -42,7 +42,7 @@ function createKnobs() {
             toggleButton.style.backgroundColor = '#D3D3D3';
             toggleButton.style.fontSize = '1em'; // Gör texten större
             toggleButton.style.fontWeight = 'bold'; // Gör texten fet
-            toggleButton.style.padding = '10px 20px'; // Lägg till padding
+            //toggleButton.style.padding = '10px 20px'; // Lägg till padding
             toggleButton.style.borderRadius = '5px'; 
             toggleButton.addEventListener('click', () => {
                 const newState = toggleButton.dataset.state === 'off' ? 'on' : 'off';
