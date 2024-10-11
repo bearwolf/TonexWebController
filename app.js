@@ -31,7 +31,7 @@ const knobConfigs = [
         { cc: 26, name: 'Mid Q' },
         { cc: 29, name: 'Treble FRQ' },
         { cc: 30, name: 'EQ Pre/Post' },
-    ], toggle: { cc: 18, name: 'Compressor' }},
+    ], },
 ];
 
 let midiOutput = null;
