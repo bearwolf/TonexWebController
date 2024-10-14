@@ -221,6 +221,55 @@ async function initMIDI() {
         console.error('MIDI-åtkomst misslyckades:', error);
     }
 }
+document.querySelectorAll('.bank-select').forEach(select => {
+    for (let i = 1; i <= 50; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = `Bank ${i}`;
+        select.appendChild(option);
+    }
+});
 
+document.querySelectorAll('.cluster').forEach(cluster => {
+    const bankSelect = cluster.querySelector('.bank-select');
+    const buttons = cluster.querySelectorAll('.toggle-btn');
+
+    bankSelect.addEventListener('change', () => {
+        updateButtons(buttons, bankSelect.value);
+        highlightCluster(cluster);
+    });
+
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            const bank = parseInt(bankSelect.value, 10);
+            const pcValue = (bank - 1) * 3 + index;
+            sendMIDIPC(pcValue);
+
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+
+            highlightCluster(cluster);
+        });
+    });
+});
+
+function highlightCluster(selectedCluster) {
+    document.querySelectorAll('.cluster').forEach(cluster => {
+        cluster.classList.remove('selected');
+    });
+    selectedCluster.classList.add('selected');
+}
+
+function updateButtons(buttons, bank) {
+    // Uppdatera knapplogik om det behövs
+}
+
+function sendMIDIPC(pcValue) {
+    if (midiOutput) {
+        const programChangeMessage = [0xC0 + midiChannel, pcValue];
+        midiOutput.send(programChangeMessage);
+        console.log(`MIDI PC skickat: ${pcValue}`);
+    }
+}
 createKnobs();
 initMIDI();

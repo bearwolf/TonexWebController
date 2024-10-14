@@ -24,6 +24,9 @@ h1 {
     font-size: 2em; /* Stor textstorlek */
     font-weight: bold; /* Fet text */
 }
+h2 {
+    margin: 0px;
+}
 .row {
     display: flex;
     margin: 0px 10px;
@@ -60,4 +63,64 @@ h1 {
     font-size: em; /* Stor textstorlek */
 
 
+}
+.row {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.cluster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+button.selected {
+    background-color: #00FF00;
+}
+
+button:not(.selected) {
+    background-color: #D3D3D3;
+}
+.bank-select {
+    padding: 4px;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+}
+.midi-outputs {
+    padding: 4px;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+}
+.midi-channel {
+    padding: 4px;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+}
+.cluster {
+    padding: 10px;
+    border-radius: 5px 5px 5px 5px;
+}
+.cluster.selected {
+    padding: 10px;
+    background-color: #2a5735; /* Bakgrundsfärg för markerat kluster */
+    border-radius: 5px 5px 5px 5px;
 }
