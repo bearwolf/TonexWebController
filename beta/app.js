@@ -481,8 +481,28 @@ function createDelayModule() {
     // Dropdown för delay-typ
     const delayTypeDropdown = document.createElement('select');
     const delayOptions = [
-        { name: 'Digital', ccValue: 0, knobs: [{ cc: 20, name: 'Time' }, { cc: 21, name: 'Feedback' }, { cc: 22, name: 'Mix' }] },
-        { name: 'Tape', ccValue: 1, knobs: [{ cc: 23, name: 'Time' }, { cc: 24, name: 'Saturation' }, { cc: 25, name: 'Mix' }] }
+        { 
+            name: 'Digital', 
+            ccValue: 0, 
+            knobs: [{ cc: 5, name: 'Time' }, { cc: 6, name: 'Feedback' }, { cc: 8, name: 'Mix' }],
+            syncCC: 4,  // CC för Sync Toggle
+            modeCC: 7,  // CC för Mode
+            modeOptions: [
+                { name: 'Normal', ccValue: 0 },
+                { name: 'Ping Pong', ccValue: 127 }
+            ]
+        },
+        { 
+            name: 'Tape', 
+            ccValue: 1, 
+            knobs: [{ cc: 92, name: 'Time' }, { cc: 93, name: 'Feedback' }, { cc: 95, name: 'Mix' }],
+            syncCC: 91,  // CC för Sync Toggle
+            modeCC: 94, // CC för Mode
+            modeOptions: [
+                { name: 'Normal', ccValue: 0 },
+                { name: 'Ping Pong', ccValue: 127 }
+            ]
+        }
     ];
 
     delayOptions.forEach((opt, index) => {
@@ -494,9 +514,12 @@ function createDelayModule() {
 
     delayTypeDropdown.addEventListener('change', () => {
         const selectedOption = delayOptions[delayTypeDropdown.selectedIndex];
-        renderDelayKnobs(selectedOption.knobs, rowContainer, delayTypeDropdown, onOffToggle, syncToggle, modeDropdown, slideToggle, delayOptions, modeOptions);
+        renderDelayKnobs(selectedOption.knobs, rowContainer, delayTypeDropdown, onOffToggle, syncToggle, modeDropdown, slideToggle, delayOptions);
         sendMIDICC(3, selectedOption.ccValue);
         console.log(`Delay Type: Skickat CC#3 med värde ${selectedOption.ccValue}`);
+
+        // Uppdatera modeDropdown med rätt alternativ
+        updateModeDropdown(modeDropdown, selectedOption.modeOptions);
     });
 
     rowContainer.appendChild(delayTypeDropdown);
@@ -522,33 +545,25 @@ function createDelayModule() {
     syncToggle.className = 'toggle-button';
     syncToggle.dataset.state = 'off';
     syncToggle.addEventListener('click', () => {
+        const selectedOption = delayOptions[delayTypeDropdown.selectedIndex];
         const newState = syncToggle.dataset.state === 'off' ? 'on' : 'off';
         syncToggle.dataset.state = newState;
         const value = newState === 'on' ? 127 : 0;
-        sendMIDICC(4, value);
-        console.log(`Sync Toggle: Skickat CC#4 med värde ${value}`);
+        sendMIDICC(selectedOption.syncCC, value);
+        console.log(`Sync Toggle: Skickat CC#${selectedOption.syncCC} med värde ${value}`);
     });
 
     rowContainer.appendChild(syncToggle);
 
     // Dropdown för mode
     const modeDropdown = document.createElement('select');
-    const modeOptions = [
-        { name: 'Normal', ccValue: 0 },
-        { name: 'Ping Pong', ccValue: 127 }
-    ];
-
-    modeOptions.forEach((opt, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = opt.name;
-        modeDropdown.appendChild(option);
-    });
+    updateModeDropdown(modeDropdown, delayOptions[0].modeOptions);
 
     modeDropdown.addEventListener('change', () => {
-        const selectedOption = modeOptions[modeDropdown.selectedIndex];
-        sendMIDICC(7, selectedOption.ccValue);
-        console.log(`Mode: Skickat CC#7 med värde ${selectedOption.ccValue}`);
+        const selectedOption = delayOptions[delayTypeDropdown.selectedIndex];
+        const selectedModeOption = selectedOption.modeOptions[modeDropdown.selectedIndex];
+        sendMIDICC(selectedOption.modeCC, selectedModeOption.ccValue);
+        console.log(`Mode: Skickat CC#${selectedOption.modeCC} med värde ${selectedModeOption.ccValue}`);
     });
 
     rowContainer.appendChild(modeDropdown);
@@ -580,10 +595,20 @@ function createDelayModule() {
 
     moduleContainer.appendChild(rowContainer);
 
-    renderDelayKnobs(delayOptions[0].knobs, rowContainer, delayTypeDropdown, onOffToggle, syncToggle, modeDropdown, slideToggle, delayOptions, modeOptions);
+    renderDelayKnobs(delayOptions[0].knobs, rowContainer, delayTypeDropdown, onOffToggle, syncToggle, modeDropdown, slideToggle, delayOptions);
 }
 
-function renderDelayKnobs(knobs, rowContainer, delayTypeDropdown, onOffToggle, syncToggle, modeDropdown, slideToggle, delayOptions, modeOptions) {
+function updateModeDropdown(dropdown, modeOptions) {
+    dropdown.innerHTML = ''; // Rensa befintliga alternativ
+    modeOptions.forEach((opt, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = opt.name;
+        dropdown.appendChild(option);
+    });
+}
+
+function renderDelayKnobs(knobs, rowContainer, delayTypeDropdown, onOffToggle, syncToggle, modeDropdown, slideToggle, delayOptions) {
     const knobGroup = document.createElement('div');
     knobGroup.className = 'knob-group';
 
@@ -606,7 +631,7 @@ function renderDelayKnobs(knobs, rowContainer, delayTypeDropdown, onOffToggle, s
     }
 
     const sendAllButton = document.createElement('button');
-    sendAllButton.innerHTML = 'Apply all';
+    sendAllButton.innerHTML = 'Send All MIDI';
     sendAllButton.className = 'advanced-button';
     sendAllButton.addEventListener('click', () => {
         const selectedDelayOption = delayOptions[delayTypeDropdown.selectedIndex];
@@ -618,12 +643,12 @@ function renderDelayKnobs(knobs, rowContainer, delayTypeDropdown, onOffToggle, s
         console.log(`Send All: Skickat CC#2 med värde ${onOffValue}`);
 
         const syncValue = syncToggle.dataset.state === 'on' ? 127 : 0;
-        sendMIDICC(4, syncValue);
-        console.log(`Send All: Skickat CC#4 med värde ${syncValue}`);
+        sendMIDICC(selectedDelayOption.syncCC, syncValue);
+        console.log(`Send All: Skickat CC#${selectedDelayOption.syncCC} med värde ${syncValue}`);
 
-        const selectedModeOption = modeOptions[modeDropdown.selectedIndex];
-        sendMIDICC(7, selectedModeOption.ccValue);
-        console.log(`Send All: Skickat CC#7 med värde ${selectedModeOption.ccValue}`);
+        const selectedModeOption = selectedDelayOption.modeOptions[modeDropdown.selectedIndex];
+        sendMIDICC(selectedDelayOption.modeCC, selectedModeOption.ccValue);
+        console.log(`Send All: Skickat CC#${selectedDelayOption.modeCC} med värde ${selectedModeOption.ccValue}`);
 
         const slideToggleValue = slideToggle.checked ? 127 : 0;
         sendMIDICC(1, slideToggleValue);
