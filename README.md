@@ -1,5 +1,5 @@
 # Hi, this is a hobbyproject where you can control your ToneX Pedal from your browser.
-
+# Now updated from the beta to new version with FX support. Old version at https://bearwolf.github.io/TonexWebController/old
 [Access it as a webpage here!](https://bearwolf.github.io/TonexWebController/)
     
     1. Connect pedal via cable. Make sure Midi is set to 'Through' or 'Merge' on the tonex.

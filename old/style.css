@@ -1,0 +1,126 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    user-select: none;
+    background: #3f3f3f;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #595959, #3f3f3f, #252525);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #595959, #3f3f3f, #252525); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: rgb(255, 255, 255);
+    background-image: url("png/bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: brightness(80%);
+
+}
+p {
+    align-items: center;
+    text-align: center;
+}
+h1 {
+    font-size: 2em; /* Stor textstorlek */
+    font-weight: bold; /* Fet text */
+}
+h2 {
+    margin: 0px;
+}
+.row {
+    display: flex;
+    margin: 0px 10px;
+    background-color: rgba(55, 55, 55, .5);
+    border-radius: 20px;
+    padding: 20px;
+    border: 3px solid #757575;  
+    background-blend-mode: darken;
+}
+.knob-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+.knob {
+    border: 3px solid #000000;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.toggle-button {
+    
+    width: 110px;
+    height: 105px;
+}      
+.label {
+    text-align: center;
+              font-size: 1.1em; /* Stor textstorlek */
+    font-weight: bold; /* Fet text */
+}
+.bottomText {
+    text-align: center;
+    font-size: em; /* Stor textstorlek */
+
+
+}
+.row {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.cluster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+button.selected {
+    background-color: #00FF00;
+}
+
+button:not(.selected) {
+    background-color: #D3D3D3;
+}
+.bank-select {
+    padding: 4px;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+}
+.midi-outputs {
+    padding: 4px;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+}
+.midi-channel {
+    padding: 4px;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+}
+.cluster {
+    padding: 10px;
+    border-radius: 5px 5px 5px 5px;
+}
+.cluster.selected {
+    padding: 10px;
+    background-color: #2a5735; /* Bakgrundsfärg för markerat kluster */
+    border-radius: 5px 5px 5px 5px;
+}

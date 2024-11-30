@@ -36,23 +36,57 @@ h2 {
     border: 3px solid #757575;  
     background-blend-mode: darken;
 }
+.module {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 20px;
+    background-color: rgba(55, 55, 55, .5);
+    border-radius: 20px;
+    padding: 20px;
+    border: 3px solid #757575;  
+    background-blend-mode: darken;
+}
+.toggle-group, .knob-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Mellanrum mellan knappar */
+}
 .knob-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 10px;
 }
+
 .knob {
     border: 3px solid #000000;
     cursor: pointer;
     margin-bottom: 5px;
     border-radius: 5px;
 }
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px; /* Mellanrum mellan elementen */
+}
+
 .toggle-button {
-    
     width: 110px;
     height: 105px;
-}      
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #D3D3D3;
+}
+.toggle-button[data-state="on"] {
+    background-color: #00FF00; /* Grön för på */
+}
+
 .label {
     text-align: center;
               font-size: 1.1em; /* Stor textstorlek */
@@ -123,4 +157,121 @@ button:not(.selected) {
     padding: 10px;
     background-color: #2a5735; /* Bakgrundsfärg för markerat kluster */
     border-radius: 5px 5px 5px 5px;
+}
+.toggle-button {
+    width: 80px; /* Ändra bredden för en mindre knapp */
+    height: 80px; /* Ändra höjden för en mindre knapp */
+    padding: 8px 12px; /* Mindre padding för kompakt storlek */
+    border-radius: 10px; /* Mer rundad för snyggare look */
+    cursor: pointer;
+    background-color: #D3D3D3;
+    border: none; /* Ta bort standard border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lägg till skugga för djup */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold; /* Fet text */
+}
+
+.toggle-button[data-state="on"] {
+    background-color: #00FF00;
+}
+
+.toggle-button:hover {
+    transform: scale(1.05); /* Liten förstoring vid hover */
+    
+}
+
+select {
+    padding: 8px 16px; /* Större padding för bättre klickyta */
+    border-radius: 10px; /* Rundad form */
+    border: 1px solid #E5E5E5;
+    background-color: #f9f9f9; /* Ljusa upp bakgrunden */
+    font-size: 1em; /* Jämn textstorlek */
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Skugga för djup */
+    margin-right: 10px; /* Mellanrum till höger */
+}
+
+select:focus {
+    outline: none; /* Ta bort standard outline */
+    border-color: #00FF00; /* Ändra färg vid fokus */
+}
+/* Stil för .basicDrop - liknande den gamla stilen */
+.basicDrop {
+    padding: 2px;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px; /* Rundade hörn */
+    background-color: #f0f0f0; /* Original bakgrundsfärg */
+    font-size: 0.9em; /* Original textstorlek */
+    box-shadow: none; /* Ingen skugga */
+    margin-right: 10px; /* Mellanrum till höger */
+    margin-bottom: 4px;
+}
+
+/* Stilar för fokus */
+.basicDrop:focus {
+    outline: none; /* Ta bort standard outline */
+    border-color: #00FF00; /* Ändra färg vid fokus för att indikera interaktion */
+}
+.slide-toggle-container {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 34px;
+    margin: 0 20px; /* Mellanrum för att undvika överlapp */
+}
+
+.slide-toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slide-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.slide-toggle-label:before {
+    content: "";
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.4s;
+}
+
+.slide-toggle:checked + .slide-toggle-label {
+    background-color: #00FF00;
+}
+
+.slide-toggle:checked + .slide-toggle-label:before {
+    transform: translateX(26px);
+}
+
+.slide-toggle-container:before, .slide-toggle-container:after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    color: #fff;
+}
+
+.slide-toggle-container:before {
+    left: -25px;
+    content: "Pre";
+}
+
+.slide-toggle-container:after {
+    right: -30px;
+    content: "Post";
 }

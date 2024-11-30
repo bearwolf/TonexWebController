@@ -26,8 +26,8 @@
 <body>
     <h1>ToneX pedal webcontroller</h1>
     <p>Hi, this is a hobbyproject where you can control your <a href="https://www.ikmultimedia.com/products/tonexpedal/">Tonex Pedal</a> from your browser. Instructions at the bottom. Doesn't work with Tonex One.</p>
-    <div>Midi-device: <select id="midi-outputs" class="basicDrop"></select> </div>
-    <div>Midi-Channel:<select id="midi-channel" class="basicDrop">
+    <div>Midi-device: <select id="midi-outputs"></select> </div>
+    <div>Midi-Channel:<select id="midi-channel">
         <!-- Kanalval från 1 till 16 -->
         <option value="0">MidiCh 1</option>
         <option value="1">MidiCh 2</option>
@@ -46,9 +46,6 @@
         <option value="14">MidiCh 15</option>
         <option value="15">MidiCh 16</option>
     </select></div>
-
-        <!-- Denna div kommer att fyllas dynamiskt med JavaScript -->
-    </div>
     <div class="row">
         <div class="cluster">
             <select class="bank-select"></select>
@@ -58,7 +55,7 @@
                 <button class="toggle-btn">C</button>
             </div>
         </div>
-    <p>This block is for presets switching <br>for comparison and level matching.<br>Remember!<br> Knobs doesn't change with the preset.<br>You can change preset and then press Apply all<br> to copy your latest settings to other presets.</p>
+    <p>This block is for presets switching <br>for comparison and level matching.<br>Remember!<br> Knobs doesn't change with the preset.</p>
         <div class="cluster">
             <select class="bank-select"></select>
             <div class="button-group">
@@ -68,10 +65,6 @@
             </div>
         </div>
     </div>
-    <h2>Delay controls</h2>
-    <div id="delay-module" class="module"></div>
-    <h2>Modulation controls</h2>
-    <div id="new-module" class="module"></div>
 <h2>Tone controls</h2>
     <div class="row" id="row1"></div>
 <h2>EQ adjust</h2>
